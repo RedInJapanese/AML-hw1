@@ -55,3 +55,19 @@ plt.show()
 # print(train_encoded.head())
 
 
+
+
+
+# Question 5
+
+features = ["GrLivArea", "OverallQual", "CentralAir"]
+target = "SalePrice"
+
+
+#OHE
+train = pd.get_dummies(train, columns=["CentralAir"], drop_first=True)
+
+# Build X (features) and y (target)
+x = train[["GrLivArea", "OverallQual", "CentralAir_Y"]].values
+y = train[target].values.reshape(-1, 1)
+
