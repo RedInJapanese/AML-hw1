@@ -81,3 +81,20 @@ xty = x.T @ y
 beta = xtx_inverse @ xty  
 
 # regression coefficient ^^^^ 
+
+
+
+#predictions
+
+
+y_pred = x @ beta
+
+# --------------------------
+# Evaluation metrics
+# --------------------------
+mse = np.mean((y - y_pred) ** 2)
+r2 = 1 - np.sum((y - y_pred) ** 2) / np.sum((y - np.mean(y)) ** 2)
+
+print("OLS Coefficients   ", beta.flatten())
+print(f"MSE   {mse:.2f}")
+print(f"R2 {r2:.4f}")
