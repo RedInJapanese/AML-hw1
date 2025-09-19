@@ -30,3 +30,12 @@ plt.show()
 
 
 #part 1 question 4
+
+ohe_feature = "Central Air"
+
+plt.figure(figsize=(5,4))
+sns.countplot(x=ohe_feature, data=train)
+plt.title(f"Original Distribution of {ohe_feature}")
+plt.xlabel(ohe_feature)
+plt.ylabel("Count")
+plt.show()
