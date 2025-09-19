@@ -31,22 +31,27 @@ plt.show()
 
 #part 1 question 4
 
-ohe_feature = "CentralAir"
+ohe_feature = "Neighborhood"
 
-plt.figure(figsize=(5,4))
-sns.countplot(x=ohe_feature, data=train)
-plt.title(f"Original Distribution")
-plt.xlabel(ohe_feature)
+plt.figure(figsize=(12,6))
+sns.countplot(y=ohe_feature, data=train, order=train[ohe_feature].value_counts().index)
+plt.title(f"Original ")
+plt.xlabel("Count")
+plt.ylabel(ohe_feature)
+plt.show()
+
+# ohe
+train_onehot = pd.get_dummies(train[ohe_feature], prefix=ohe_feature)
+
+train_encoded = pd.concat([train[[ohe_feature]], train_onehot], axis=1)
+
+
+train_onehot.sum().sort_values(ascending=False).plot(kind="bar", figsize=(14,6))
+plt.title(f"One-Hot Encode")
 plt.ylabel("Count")
 plt.show()
 
 
-#OHE
-train_oh = pd.get_dummies(train[ohe_feature], prefix=ohe_feature)
-train_encoded = pd.concat([train[[ohe_feature]], train_oh], axis=1)
+# print(train_encoded.head())
 
-train_oh.sum().plot(kind="bar", figsize=(6,4))
-plt.title(f"One-Hot Encoding")
-plt.ylabel("Count")
-plt.show()
 
