@@ -70,7 +70,7 @@ train = pd.get_dummies(train, columns=["CentralAir"], drop_first=True)
 
 # Build X (features) and y (target)
 x = train[["GrLivArea", "OverallQual", "CentralAir_Y"]].astype(float).values
-y = train[target].values.reshape(-1, 1)
+y = train[target].astype(float).values.reshape(-1, 1)
 
 x = np.hstack([np.ones((x.shape[0], 1)), x])  # samples, featuers + 1
 
