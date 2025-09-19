@@ -69,15 +69,15 @@ target = "SalePrice"
 train = pd.get_dummies(train, columns=["CentralAir"], drop_first=True)
 
 # Build X (features) and y (target)
-x = train[["GrLivArea", "OverallQual", "CentralAir_Y"]].values
+x = train[["GrLivArea", "OverallQual", "CentralAir_Y"]].astype(float).values
 y = train[target].values.reshape(-1, 1)
 
 x = np.hstack([np.ones((x.shape[0], 1)), x])  # samples, featuers + 1
 
 # OLS = (X^T X)^(-1) X^T y
-xtx = x.t @ x
+xtx = x.T @ x
 xtx_inverse = np.linalg.inv(xtx)
-xty = x.t @ y
+xty = x.T @ y
 beta = xtx_inverse @ xty  
 
 # regression coefficient ^^^^ 
