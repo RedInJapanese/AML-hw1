@@ -19,12 +19,12 @@ y = train["Survived"]
 
 #missing ages need to be filled with mediasn, same with embarked and fare
 x["Age"] = x["Age"].fillna(x["Age"].median())
-x["Embarked"] = x["Embarked"].fillna(x["Embarked"].median())
+x["Embarked"] = x["Embarked"].fillna(x["Embarked"].mode()[0])
 x["Fare"] = x["Fare"].fillna(x["Fare"].median())
 
 
 #encode categorical features
-x["Sex"] = X["Sex"].map({"male": 0, "female": 1})
+x["Sex"] = x["Sex"].map({"male": 0, "female": 1})
 # OHEing embarked
 x = pd.get_dummies(x, columns=["Embarked"], drop_first=True)
 
