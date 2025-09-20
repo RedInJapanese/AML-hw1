@@ -63,4 +63,9 @@ for col in missing_cols:
     x_test[col] = 0
 x_test = x_test[x_train.columns]  # reorder columns
 
+test_pred = model.predict(x_test)
+submission = pd.DataFrame({"PassengerId": test_id, "Survived": test_pred})
+submission.to_csv("t_submission.csv", index=False)
+print("Saved t_submission.csv")
+
 
